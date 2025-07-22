@@ -30,7 +30,7 @@ public class ShopTypeServiceImpl extends ServiceImpl<ShopTypeMapper, ShopType> i
     private StringRedisTemplate stringRedisTemplate;
 
     /**
-     * 查询所有商铺类型
+     * 查询商铺类型缓存
      */
     public Result queryTypeList() {
         //用String实现，opsForValue写法
