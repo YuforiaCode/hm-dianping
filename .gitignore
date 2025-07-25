@@ -34,3 +34,6 @@ build/
 
 # 排除生产环境配置
 application.yaml
+
+# 忽略Redis配置文件（包含Linux-Redis密码）
+src/main/java/com/hmdp/config/RedissonConfig.java
