@@ -18,4 +18,9 @@ public interface IVoucherOrderService extends IService<VoucherOrder> {
      * 秒杀下单
      */
     Result seckillVoucher(Long voucherId);
+
+    /**
+     * 创建优惠券订单
+     */
+    Result createVoucherOrder(Long voucherId);
 }
