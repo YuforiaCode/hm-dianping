@@ -28,4 +28,9 @@ public interface IBlogService extends IService<Blog> {
      * 点赞博客
      */
     Result likeBlog(Long id);
+
+    /**
+     * 查询点赞列表排行榜
+     */
+    Result queryBlogLikes(Long id);
 }
