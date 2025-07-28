@@ -94,4 +94,13 @@ public class BlogController {
         List<Blog> records = page.getRecords();
         return Result.ok(records);
     }
+
+    /**
+     * 查询关注推送页面的滚动分页查询
+     */
+    @GetMapping("/of/follow")
+    public Result queryBlogOfFollow(
+            @RequestParam("lastId") Long max, @RequestParam(value = "offset", defaultValue = "0") Integer offset){
+        return blogService.queryBlogOfFollow(max, offset);
+    }
 }

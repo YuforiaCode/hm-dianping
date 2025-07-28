@@ -38,4 +38,9 @@ public interface IBlogService extends IService<Blog> {
      * 新增博客
      */
     Result saveBlog(Blog blog);
+
+    /**
+     * 查询关注推送页面的滚动分页查询
+     */
+    Result queryBlogOfFollow(Long max, Integer offset);
 }
