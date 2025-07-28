@@ -25,4 +25,14 @@ public interface IUserService extends IService<User> {
      * 短信验证码登录
      */
     Result login(LoginFormDTO loginForm, HttpSession session);
+
+    /**
+     * 签到
+     */
+    Result sign();
+
+    /**
+     * 统计连续签到
+     */
+    Result signCount();
 }

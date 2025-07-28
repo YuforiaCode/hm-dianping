@@ -98,4 +98,20 @@ public class UserController {
         // 返回
         return Result.ok(userDTO);
     }
+
+    /**
+     * 签到
+     */
+    @PostMapping("/sign")
+    public Result sign(){
+       return userService.sign();
+    }
+
+    /**
+     * 统计连续签到(到今天为止连续签到了几天，不是本月最多连续签到了几天)
+     */
+    @GetMapping("/sign/count")
+    public Result signCount(){
+        return userService.signCount();
+    }
 }
