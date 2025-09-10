@@ -240,15 +240,16 @@ public class ShopServiceImpl extends ServiceImpl<ShopMapper, Shop> implements IS
     /**
      * 更新商铺缓存
      */
-    @Transactional
+    @Transactional  //如果删除缓存失败则回滚，单体项目在方法上加上统一事务进行控制
     public Result update(Shop shop) {
+        //0.对店铺id进行判断，为空则不更新
         Long id = shop.getId();
         if (id == null) {
             return Result.fail("店铺id不能为空");
         }
-        //1.更新数据库
+        //1.先更新数据库
         updateById(shop);
-        //2.删除缓存
+        //2.再删除缓存
         stringRedisTemplate.delete(CACHE_SHOP_KEY + shop.getId());
         return Result.ok();
     }

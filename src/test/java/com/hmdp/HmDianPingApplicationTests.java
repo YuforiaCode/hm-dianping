@@ -39,12 +39,18 @@ class HmDianPingApplicationTests {
     @Resource
     private StringRedisTemplate stringRedisTemplate;
 
+    /**
+     * 测试RedisIdWorker，准备一个线程池，给500个线程
+     */
     private ExecutorService es = Executors.newFixedThreadPool(500);
 
+    /**
+     * 测试一下并发情况下，生成id的性能以及生成id的情况
+     */
     @Test
     void testIdWorker() throws InterruptedException {
         CountDownLatch latch = new CountDownLatch(300);
-        Runnable task = () -> {
+        Runnable task = () -> {  //任务：每个线程来了，都去生成100个id，并且打印一下
             for (int i = 0; i < 100; i++) {
                 long id = redisIdWorker.nextId("order");
                 System.out.println("id = " + id);
@@ -52,7 +58,7 @@ class HmDianPingApplicationTests {
             latch.countDown();
         };
         long begin = System.currentTimeMillis();
-        for (int i = 0; i < 300; i++) {
+        for (int i = 0; i < 300; i++) {  //将任务提交300次
             es.submit(task);
         }
         latch.await();
